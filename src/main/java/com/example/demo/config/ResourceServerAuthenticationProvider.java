@@ -17,7 +17,42 @@ public class ResourceServerAuthenticationProvider implements AuthenticationProvi
 	public Authentication authenticate(Authentication authentication) {
 //		UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken();
 //		return auth;
-		return null;
+		return new Authentication() {
+			@Override
+			public Collection<? extends GrantedAuthority> getAuthorities() {
+				return null;
+			}
+
+			@Override
+			public Object getCredentials() {
+				return null;
+			}
+
+			@Override
+			public Object getDetails() {
+				return null;
+			}
+
+			@Override
+			public Object getPrincipal() {
+				return null;
+			}
+
+			@Override
+			public boolean isAuthenticated() {
+				return false;
+			}
+
+			@Override
+			public void setAuthenticated(boolean b) throws IllegalArgumentException {
+
+			}
+
+			@Override
+			public String getName() {
+				return null;
+			}
+		};
 	}
 
 	@Override

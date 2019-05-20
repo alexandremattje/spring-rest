@@ -28,12 +28,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/**").hasRole("USER").and().formLogin();
+		http.authorizeRequests().antMatchers("/**").hasRole("USER")
+				.and().userDetailsService(userService).authorizeRequests();
+//				.and().formLogin();
 	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userService);
+		auth.userDetailsService(userService).configure(auth);
 	}
 
 //	@Override

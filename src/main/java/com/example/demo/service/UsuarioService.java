@@ -5,10 +5,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.List;
 
+@Component
 public class UsuarioService implements UserDetailsService {
 
     @Override
@@ -18,7 +20,7 @@ public class UsuarioService implements UserDetailsService {
             @Override
             public Collection<? extends GrantedAuthority> getAuthorities() {
                 List<SimpleGrantedAuthority> auths = new java.util.ArrayList<>();
-                auths.add(new SimpleGrantedAuthority("Admin"));
+                auths.add(new SimpleGrantedAuthority("USER"));
                 return auths;
             }
 
