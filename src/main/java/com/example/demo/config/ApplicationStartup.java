@@ -26,8 +26,7 @@ implements ApplicationListener<ApplicationReadyEvent> {
     this.em.persist(new Pais(null, "Brasil", "BR", "Brasileiro"));
     this.em.persist(new Pais (null, "Brasil", "BR", "Brasileiro"));
     this.em.persist(new Pais (null, "Brasil", "BR", "Brasileiro"));
- 
-    return;
+
   }
- 
+
 }
