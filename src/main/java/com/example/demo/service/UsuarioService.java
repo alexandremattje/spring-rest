@@ -26,7 +26,7 @@ public class UsuarioService implements UserDetailsService {
 
             @Override
             public String getPassword() {
-                return "123";
+                return "secret";
             }
 
             @Override
