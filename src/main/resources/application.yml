@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: demo
+  jpa:
+    database: H2
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+      format-sql: true
+server:
+  port: 7777

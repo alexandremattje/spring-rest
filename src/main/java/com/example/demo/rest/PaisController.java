@@ -15,7 +15,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/pais")
+@RequestMapping("/api/pais")
 public class PaisController {
 
     @Autowired

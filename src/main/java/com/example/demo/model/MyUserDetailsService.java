@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,5 +25,10 @@ public class MyUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException(username);
         }
         return new MyUserPrincipal(user);
+    }
+
+    @Transactional
+    public void save(User user) {
+        userRepository.save(user);
     }
 }
