@@ -2,6 +2,8 @@ package com.example.demo.rest;
 
 import com.example.demo.dto.PaisDTO;
 import com.example.demo.model.PaisModel;
+import com.example.demo.model.repository.PaisRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,7 @@ import java.util.List;
 public class PaisController {
 
     @Autowired
-    private PaisModel paisModel;
+    private PaisRepository paisModel;
 
     @GetMapping(path = "/listar")
     public ResponseEntity<Collection<PaisDTO>> listar() {
