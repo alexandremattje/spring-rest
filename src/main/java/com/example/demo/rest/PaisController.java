@@ -30,5 +30,12 @@ public class PaisController {
         return new ResponseEntity<>(all, HttpStatus.OK);
     }
 
+    @GetMapping(path = "/fromjson")
+    public ResponseEntity<List<String>> fromJson() {
+        List<String> all = this.paisModel.listFromJson();
+
+        return new ResponseEntity<>(all, HttpStatus.OK);
+    }
+
 
 }
