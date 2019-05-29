@@ -26,15 +26,15 @@ implements ApplicationListener<ApplicationReadyEvent> {
   @Transactional
   @Override
   public void onApplicationEvent(final ApplicationReadyEvent event) {
-
-    userService.save(User.builder()
-            .password("manager")
-            .username("convidado")
-            .build());
-
-    this.em.persist(new Pais(null, "Brasil", "BR", "Brasileiro"));
-    this.em.persist(new Pais (null, "Brasil", "BR", "Brasileiro"));
-    this.em.persist(new Pais (null, "Brasil", "BR", "Brasileiro"));
+//
+//    userService.save(User.builder()
+//            .password("manager")
+//            .username("convidado")
+//            .build());
+//
+//    this.em.persist(new Pais(null, "Brasil", "BR", "Brasileiro"));
+//    this.em.persist(new Pais (null, "Brasil", "BR", "Brasileiro"));
+//    this.em.persist(new Pais (null, "Brasil", "BR", "Brasileiro"));
 
   }
 

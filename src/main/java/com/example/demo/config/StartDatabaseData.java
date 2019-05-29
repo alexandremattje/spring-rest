@@ -33,10 +33,10 @@ public class StartDatabaseData implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
 
-        userService.save(User.builder()
-                .password("manager")
-                .username("convidado")
-                .build());
+//        userService.save(User.builder()
+//                .password("manager")
+//                .username("convidado")
+//                .build());
 //        insert into usuario(id,login,senha,nome,administrador) values
 //                (SEQ_USUARIO.NEXTVAL, "convidado", "manager", "Usuário convidado",
 //                        0);
@@ -49,9 +49,9 @@ public class StartDatabaseData implements WebApplicationInitializer {
 //        insert into pais(id,nome,sigla,gentilico) values (SEQ_PAIS.NEXTVAL,
 //                "Alemanha", "AL", "Alemão");
 
-        this.em.persist(new Pais (null, "Brasil", "BR", "Brasileiro"));
-        this.em.persist(new Pais (null, "Brasil", "BR", "Brasileiro"));
-        this.em.persist(new Pais (null, "Brasil", "BR", "Brasileiro"));
+//        this.em.persist(new Pais (null, "Brasil", "BR", "Brasileiro"));
+//        this.em.persist(new Pais (null, "Brasil", "BR", "Brasileiro"));
+//        this.em.persist(new Pais (null, "Brasil", "BR", "Brasileiro"));
 
     }
 }
