@@ -8,9 +8,10 @@ spring:
       format-sql: true
   datasource:
     platform: POSTGRESQL
-    url: jdbc:postgresql://localhost:5432/cota
+    url: jdbc:postgresql://localhost:5433/cota
     username: cota
     password: cotaatoc
     driverClassName: org.postgresql.Driver
 server:
   port: 7777
+

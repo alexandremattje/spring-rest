@@ -29,7 +29,7 @@ public class PaisModel {
 	}
 
 	public List<String> listFromJson() {
-		Query qry = this.em.createNativeQuery("select array_to_json(array_agg(row_to_json(t))) as empreendimentos " +
+		Query qry = this.em.createNativeQuery("select array_agg(row_to_json(t)) as empreendimentos " +
 				"                from " +
 				"            (select * from empreendimentos) as t");
 		List res = qry.getResultList();
