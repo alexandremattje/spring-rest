@@ -8,23 +8,23 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dto.MyUserPrincipal;
+import com.example.demo.dto.UsuarioAutenticado;
 import com.example.demo.model.jpa.User;
 import com.example.demo.model.repository.UserRepository;
 
 @Service
-public class MyUserDetailsService implements UserDetailsService {
+public class UsuarioModel implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByLogin(username);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
-        return new MyUserPrincipal(user);
+        return new UsuarioAutenticado(user);
     }
 
     @Transactional

@@ -22,14 +22,20 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_usuario")
+	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "nm_nick", nullable = false, unique = true)
-	private String username;
+	@Column(name = "login", nullable = false, unique = true)
+	private String login;
 
-	@Column(name = "pw_usuario")
-	private String password;
+	@Column(name = "senha")
+	private String senha;
+
+	@Column(name = "nome")
+	private String nome;
+
+	@Column(name = "administrador")
+	private Boolean administrador;
 
 	//standard getters and setters
 }

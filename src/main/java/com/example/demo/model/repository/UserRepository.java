@@ -9,5 +9,5 @@ import com.example.demo.model.jpa.User;
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findByUsername(String username);
+    User findByLogin(String username);
 }

@@ -1,24 +1,15 @@
 package com.example.demo.config;
 
-import com.example.demo.model.MyUserDetailsService;
-import com.example.demo.model.jpa.Pais;
-import com.example.demo.model.jpa.User;
-import com.example.demo.model.repository.UserRepository;
+import com.example.demo.model.UsuarioModel;
 
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.WebApplicationInitializer;
 
-import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import java.util.logging.Logger;
-
-import static com.example.demo.model.jpa.QPais.pais;
 
 @Component
 @Scope(value = "prototype")
@@ -28,7 +19,7 @@ public class StartDatabaseData implements WebApplicationInitializer {
     private EntityManager em;
 
     @Autowired
-    private MyUserDetailsService userService;
+    private UsuarioModel userService;
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {

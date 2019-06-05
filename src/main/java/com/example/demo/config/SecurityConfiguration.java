@@ -1,7 +1,5 @@
 package com.example.demo.config;
 
-import com.example.demo.model.MyUserDetailsService;
-import com.example.demo.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,16 +13,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
+import com.example.demo.model.UsuarioModel;
+
 @Configuration
 @ComponentScan(basePackageClasses = { SecurityConfiguration.class })
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UsuarioService userService;
-
-	@Autowired
-	private MyUserDetailsService userDetailsService;
+	private UsuarioModel userDetailsService;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth)
@@ -55,16 +52,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.httpBasic()
-				.and().authorizeRequests().antMatchers("/api/**").authenticated()
-				.and().userDetailsService(userService).authorizeRequests()
+		http.httpBasic().and().authorizeRequests()
+				.antMatchers("/api/pais/listar").authenticated()
+				.antMatchers("/api/pais/salvar").hasAuthority("ADMIN")
 				.and().formLogin()
 				.and().csrf().disable();
 	}
 
-//	@Override
-//	protected void configure(HttpSecurity http) throws Exception {
-//		// @formatter:off
+	//	@Override
+	//	protected void configure(HttpSecurity http) throws Exception {
+	//		// @formatter:off
 //		http.csrf().csrfTokenRepository(this.csrfTokenRepository())
 //		.and()
 //			.authorizeRequests()
@@ -94,6 +91,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //					.deleteCookies("JSESSIONID")
 //					;
 //		// @formatter:on
-//	}
+	//	}
 
 }

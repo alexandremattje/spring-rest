@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,20 +24,15 @@ public class PaisController {
 
     @GetMapping(path = "/listar")
     public ResponseEntity<Collection<PaisDTO>> listar() {
-//        if (!this.service.hasAccess(filter.getId(), this.api.getPrincipal().getCollaboratorId())) {
-//            throw new AccessDeniedException();
-//        }
-
         List<PaisDTO> all = this.paisModel.listAll();
         return new ResponseEntity<>(all, HttpStatus.OK);
     }
 
-    @GetMapping(path = "/fromjson")
-    public ResponseEntity<List<String>> fromJson() {
-        List<String> all = this.paisModel.listFromJson();
+    @PostMapping(path = "/salvar")
+    public ResponseEntity<PaisDTO> salvar(@RequestBody PaisDTO paisDTO) {
+        paisDTO = paisModel.salvar(paisDTO);
 
-        return new ResponseEntity<>(all, HttpStatus.OK);
+        return new ResponseEntity<>(paisDTO, HttpStatus.OK);
     }
-
 
 }

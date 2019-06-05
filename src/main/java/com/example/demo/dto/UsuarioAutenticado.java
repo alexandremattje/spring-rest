@@ -11,26 +11,30 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.example.demo.model.jpa.User;
 
-public class MyUserPrincipal implements UserDetails {
+public class UsuarioAutenticado implements UserDetails {
     private User user;
 
-    public MyUserPrincipal(User user) {
+    public UsuarioAutenticado(User user) {
         this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority("GUEST"));
+        if (user.getAdministrador()) {
+            return Collections.singletonList(new SimpleGrantedAuthority("ADMIN"));
+        } else {
+            return Collections.singletonList(new SimpleGrantedAuthority("GUEST"));
+        }
     }
 
     @Override
     public String getPassword() {
-        return new BCryptPasswordEncoder(11).encode(user.getPassword());
+        return new BCryptPasswordEncoder(11).encode(user.getSenha());
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return user.getLogin();
     }
 
     @Override
