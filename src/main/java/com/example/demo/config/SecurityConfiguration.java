@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import com.example.demo.model.UsuarioModel;
@@ -52,10 +53,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		final TokenAuthenticationFilter tokenFilter = new TokenAuthenticationFilter();
+		http.addFilterBefore(tokenFilter, BasicAuthenticationFilter.class);
+
 		http.httpBasic().and().authorizeRequests()
 				.antMatchers("/api/pais/listar").authenticated()
 				.antMatchers("/api/pais/salvar").hasAuthority("ADMIN")
 				.and().formLogin()
+				.and().addFilterBefore()
 				.and().csrf().disable();
 	}
 

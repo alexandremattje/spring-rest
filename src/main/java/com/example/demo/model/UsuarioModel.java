@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dto.UsuarioAutenticado;
+import com.example.demo.dto.UserDetailsImpl;
 import com.example.demo.model.jpa.User;
 import com.example.demo.model.repository.UserRepository;
 
@@ -24,7 +24,7 @@ public class UsuarioModel implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
-        return new UsuarioAutenticado(user);
+        return new UserDetailsImpl(user);
     }
 
     @Transactional
