@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import com.example.demo.dto.PaisDTO;
 import com.example.demo.model.jpa.Pais;
-import com.example.demo.model.jpa.QPais;
 import com.example.demo.model.repository.PaisRepository;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPADeleteClause;

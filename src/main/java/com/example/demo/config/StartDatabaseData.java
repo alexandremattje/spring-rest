@@ -1,15 +1,15 @@
 package com.example.demo.config;
 
-import com.example.demo.model.UsuarioService;
+import javax.persistence.EntityManager;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.WebApplicationInitializer;
 
-import javax.persistence.EntityManager;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import com.example.demo.model.UsuarioService;
 
 @Component
 @Scope(value = "prototype")
