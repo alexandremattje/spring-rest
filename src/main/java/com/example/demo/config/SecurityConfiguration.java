@@ -54,7 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.httpBasic().and().authorizeRequests()
 				.antMatchers("/api/pais/listar").authenticated()
-				.antMatchers("/api/pais/salvar").hasAuthority("ADMIN")
+				.antMatchers("/api/pais/salvar", "/api/pais/excluir").hasAuthority("ADMIN")
 				.and().formLogin()
 				.and().csrf().disable();
 	}
