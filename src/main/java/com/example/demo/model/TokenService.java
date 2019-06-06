@@ -14,12 +14,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.model.jpa.QToken;
 import com.example.demo.model.jpa.Token;
 import com.example.demo.model.repository.TokenRepository;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAUpdateClause;
-import com.querydsl.jpa.sql.JPASQLQuery;
 
 @Service
 public class TokenService {

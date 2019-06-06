@@ -1,16 +1,16 @@
 package com.example.demo.config;
 
-import com.example.demo.model.UsuarioService;
-import com.example.demo.model.jpa.Pais;
-import com.example.demo.model.jpa.User;
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
+import com.example.demo.model.UsuarioService;
+import com.example.demo.model.jpa.Pais;
+import com.example.demo.model.jpa.User;
 
 @Component
 public class ApplicationStartup
