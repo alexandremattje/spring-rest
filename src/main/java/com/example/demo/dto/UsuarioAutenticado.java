@@ -17,8 +17,10 @@ public class UsuarioAutenticado {
 
     private String token;
 
-    private Boolean administrador;
+    @Builder.Default
+    private Boolean administrador = Boolean.FALSE;
 
-    private Boolean autenticado;
+    @Builder.Default
+    private Boolean autenticado = Boolean.FALSE;
 
 }

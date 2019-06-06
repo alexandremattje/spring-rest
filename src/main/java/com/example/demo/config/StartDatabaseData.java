@@ -1,6 +1,6 @@
 package com.example.demo.config;
 
-import com.example.demo.model.UsuarioModel;
+import com.example.demo.model.UsuarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -19,7 +19,7 @@ public class StartDatabaseData implements WebApplicationInitializer {
     private EntityManager em;
 
     @Autowired
-    private UsuarioModel userService;
+    private UsuarioService userService;
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {

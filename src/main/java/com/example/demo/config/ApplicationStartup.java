@@ -1,6 +1,6 @@
 package com.example.demo.config;
 
-import com.example.demo.model.UsuarioModel;
+import com.example.demo.model.UsuarioService;
 import com.example.demo.model.jpa.Pais;
 import com.example.demo.model.jpa.User;
 
@@ -20,7 +20,7 @@ implements ApplicationListener<ApplicationReadyEvent> {
   private EntityManager em;
 
   @Autowired
-  private UsuarioModel userService;
+  private UsuarioService userService;
 
   @Transactional
   @Override

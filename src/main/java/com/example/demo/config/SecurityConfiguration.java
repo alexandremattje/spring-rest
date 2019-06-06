@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
-import com.example.demo.model.UsuarioModel;
+import com.example.demo.model.UsuarioService;
 
 @Configuration
 @ComponentScan(basePackageClasses = { SecurityConfiguration.class })
@@ -22,7 +22,7 @@ import com.example.demo.model.UsuarioModel;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UsuarioModel userDetailsService;
+	private UsuarioService userDetailsService;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth)
@@ -53,14 +53,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		final TokenAuthenticationFilter tokenFilter = new TokenAuthenticationFilter();
-		http.addFilterBefore(tokenFilter, BasicAuthenticationFilter.class);
-
 		http.httpBasic().and().authorizeRequests()
 				.antMatchers("/api/pais/listar").authenticated()
 				.antMatchers("/api/pais/salvar").hasAuthority("ADMIN")
 				.and().formLogin()
-				.and().addFilterBefore()
 				.and().csrf().disable();
 	}
 

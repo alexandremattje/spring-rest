@@ -17,11 +17,12 @@ import com.example.demo.model.jpa.Pais;
 import com.example.demo.model.jpa.QPais;
 import com.example.demo.model.repository.PaisRepository;
 import com.querydsl.core.types.Projections;
+import com.querydsl.jpa.impl.JPADeleteClause;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAUpdateClause;
 
 @Component
-public class PaisModel {
+public class PaisService {
 
 	@Autowired
 	private EntityManager em;
@@ -58,5 +59,19 @@ public class PaisModel {
 		return dto;
 	}
 
+	@Transactional
+	public boolean excluir (Long id) {
+		JPADeleteClause delete = new JPADeleteClause(em, pais);
+		delete.where(pais.id.eq(id));
+		return delete.execute() > 0;
+	}
 
+	public List<PaisDTO> listAllFromFiltro(String filtro) {
+		JPAQuery query = new JPAQuery(em);
+		query.where(pais.nome.likeIgnoreCase("%" + filtro + "%"));
+		query.from(pais);
+
+		return new ArrayList<>(query.select(
+				Projections.fields(PaisDTO.class, pais.id, pais.nome, pais.sigla, pais.gentilico)).fetch());
+	}
 }
