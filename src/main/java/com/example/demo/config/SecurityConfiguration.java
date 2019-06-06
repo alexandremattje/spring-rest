@@ -55,6 +55,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.httpBasic().and().authorizeRequests()
 				.antMatchers("/api/pais/listar").authenticated()
 				.antMatchers("/api/pais/salvar").hasAuthority("ADMIN")
+				.antMatchers("/api/pais/excluir").hasAuthority("ADMIN")
 				.and().formLogin()
 				.and().csrf().disable();
 	}
