@@ -26,23 +26,23 @@ implements ApplicationListener<ApplicationReadyEvent> {
   @Override
   public void onApplicationEvent(final ApplicationReadyEvent event) {
 
-    userService.save(User.builder()
-            .senha("manager")
-            .login("convidado")
-            .nome("Usuário convidado")
-            .administrador(Boolean.FALSE)
-            .build());
-
-    userService.save(User.builder()
-            .senha("suporte")
-            .login("admin")
-            .nome("Gestor")
-            .administrador(Boolean.TRUE)
-            .build());
-
-    this.em.persist(new Pais(null, "Brasil", "BR", "Brasileiro"));
-    this.em.persist(new Pais (null, "Argentina", "AR", "Argentino"));
-    this.em.persist(new Pais (null, "Alemanha", "AL", "Alemão"));
+//    userService.save(User.builder()
+//            .senha("manager")
+//            .login("convidado")
+//            .nome("Usuário convidado")
+//            .administrador(Boolean.FALSE)
+//            .build());
+//
+//    userService.save(User.builder()
+//            .senha("suporte")
+//            .login("admin")
+//            .nome("Gestor")
+//            .administrador(Boolean.TRUE)
+//            .build());
+//
+//    this.em.persist(new Pais(null, "Brasil", "BR", "Brasileiro"));
+//    this.em.persist(new Pais (null, "Argentina", "AR", "Argentino"));
+//    this.em.persist(new Pais (null, "Alemanha", "AL", "Alemão"));
 
   }
 

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.PaisDTO;
+import com.example.demo.model.EmpreendimentoService;
 import com.example.demo.model.PaisService;
 import com.example.demo.model.TokenService;
 
@@ -26,6 +27,9 @@ public class PaisController {
     private PaisService paisModel;
 
     @Autowired
+    private EmpreendimentoService empreendimentoService;
+
+    @Autowired
     private TokenService tokenService;
 
     @GetMapping(path = "/listar")
@@ -35,6 +39,11 @@ public class PaisController {
             return new ResponseEntity<>(paises, HttpStatus.OK);
         }
         return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+    }
+
+    @GetMapping(path="/test")
+    public ResponseEntity<Collection<Object>> test() {
+        return new ResponseEntity<>(empreendimentoService.listAllFromFiltro(""), HttpStatus.OK);
     }
 
     @GetMapping(path = "/pesquisar")
